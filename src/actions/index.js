@@ -14,6 +14,7 @@ export const signOut = () => {
     }
 }
 
+// action creator for POST convention, we use formValues to get the form data and POST them into json-server db.json file
 export const createStream = formValues => async dispatch => {
     const response = await streams.post('./streams', formValues); 
     dispatch({
@@ -22,6 +23,7 @@ export const createStream = formValues => async dispatch => {
     })       
 }
 
+// action creator for GET convention, we don't need any arguments as we are trying to GET array of records
 export const fetchStreams = () => async dispatch => {
     const response = await streams.get('/streams');
     dispatch({
@@ -30,6 +32,7 @@ export const fetchStreams = () => async dispatch => {
     })
 }
 
+// action creator for GET/:id convention, we receive an id as a parameter and use this id to GET the record
 export const fetchStream = (id) => async dispatch => {
     const response = await streams.get(`/streams/${id}`);
     dispatch({
@@ -38,6 +41,7 @@ export const fetchStream = (id) => async dispatch => {
     })
 }
 
+// action creator for PUT convention, we receive an id and form data as parameters to update the values of this (id) record
 export const editStream = (id, formValues) => async dispatch => {
     const response = await streams.put(`/streams/${id}`, formValues);
     dispatch({
@@ -46,6 +50,7 @@ export const editStream = (id, formValues) => async dispatch => {
     })
 }
 
+// action creator for DELETE convention, we receive an id as a parameter to delete a record from streams array
 export const deleteStream = (id) => async dispatch => {
     await streams.delete(`/streams/${id}`);
     dispatch({
