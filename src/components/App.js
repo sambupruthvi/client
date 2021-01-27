@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import history from '../history'
 
 import StreamList from './streams/StreamList';
 import StreamCreate from './streams/StreamCreate';
@@ -13,16 +14,17 @@ import Header from './Header';
 const App = () => {
     return (
         <div className = "ui container">
-            <BrowserRouter>
+            <Router history = {history}>
                 <div>
                     <Header />
                     <Route path = '/' exact component = {StreamList} />
                     <Route path = '/streams/new' component = {StreamCreate} />
-                    <Route path = '/streams/edit' component = {StreamEdit} />
-                    <Route path = '/streams/delete' component = {StreamDelete} />
+                    {/* :id is a wild card param, we can add as many params as we can and can give any name */}
+                    <Route path = '/streams/edit/:id' component = {StreamEdit} /> 
+                    <Route path = '/streams/delete/:id' component = {StreamDelete} />
                     <Route path = '/streams/show' component = {StreamShow} />
                 </div>
-            </BrowserRouter>
+            </Router>
         </div>
     )
 }
