@@ -6,6 +6,8 @@ import StreamForm from './StreamForm';
 
 // Router passes history obj as a prop to all its components
 class StreamEdit extends React.Component{
+    // Function to get the appropriate record when we load up edit page
+    // Action creator to attempt and fetchStream with an id
     componentDidMount() {
         this.props.fetchStream(this.props.match.params.id);
     }
